@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import 'assets/scss/style.scss';
 
 function App() {
   return (
     <div className="App">
-      <h1>Test</h1>
+      <h1>Hello World</h1>
     </div>
   );
 }
