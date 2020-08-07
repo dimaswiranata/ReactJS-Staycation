@@ -5,6 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+@import "colorVariables";
 @import "functions";
 @import "variables";
 @import "mixins";
@@ -44,7 +45,7 @@
 @import "utilities";
 @import "print";
 
-.brand-text-icon{
+.brand-text-icon {
   font-size: 26px;
   font-weight: 500;
   font-family: "Poppins", sans-serif;
@@ -87,17 +88,17 @@ header {
   }
 }
 
-.section{
+section {
   margin-bottom: 70px;
 }
 
-.img-cover{
+.img-cover {
   object-fit: cover;
   height: 100%;
   width: 100%;
 }
 
-.img-contain{
+.img-contain {
   object-fit: contain;
   height: 100%;
   width: 100%;
@@ -120,7 +121,7 @@ header {
     color: $white;
     min-height: 30px;
     border-radius: 0 15px;
-    font-weight: 700;
+    font-weight: 400;
     span {
       font-weight: 300;
     }
@@ -199,5 +200,49 @@ header {
         transform: scale(1);
       }
     }
+  }
+}
+
+.testimonial-hero,
+.testimonial-hero img {
+  width: 365px;
+  height: 500px;
+}
+
+footer {
+  border-top: 1px solid $gray-200;
+  padding-top: 50px;
+
+  .brand-tagline {
+    margin-top: 8px;
+    color: $gray-500;
+    font-weight: 300;
+  }
+
+  .list-group-item {
+    padding: 0.3125rem 0;
+    border: 0;
+    a,
+    span {
+      color: $gray-500;
+      font-weight: 300;
+    }
+    a {
+      @include hover-focus {
+        color: $gray-800;
+      }
+    }
+  }
+  .copyrights {
+    margin: 50px 0;
+    font-weight: 300;
+    color: $gray-500;
+  }
+}
+
+main {
+  p {
+    color: $gray-500;
+    font-weight: 300;
   }
 }
