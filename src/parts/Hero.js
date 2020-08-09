@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Fade from 'react-reveal/Fade';
 import ImageHero from "assets/images/img-hero.jpg";
 import ImageHero_ from "assets/images/img-hero-frame.jpg";
 import IconCities from "assets/images/icons/icon-cities.svg";
@@ -20,6 +20,7 @@ function Hero(props) {
   }
 
   return (
+    <Fade bottom>
     <section className="container">
       <div className="row align-items-center">
 
@@ -111,6 +112,7 @@ function Hero(props) {
         
       </div>
     </section>
+    </Fade>
   )
 }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Fade from 'react-reveal/Fade';
 import Button from "elements/Button";
 import BrandIcon from "parts/IconText";
 
@@ -10,6 +10,7 @@ function Header(props) {
   }
 
   return (
+    <Fade>
     <header className="spacing-sm">
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light">
@@ -42,6 +43,7 @@ function Header(props) {
         </nav>
       </div>
     </header>
+    </Fade>
   )
 }
 
