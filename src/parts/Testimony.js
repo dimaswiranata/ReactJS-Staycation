@@ -36,7 +36,7 @@ function Testimony({data}) {
             {data.name}
           </h4>
           <Star 
-            value={4.75}
+            value={data.rate}
             height={35}
             width={35}
             spacing={4}
