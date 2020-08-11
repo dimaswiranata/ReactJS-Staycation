@@ -10,6 +10,8 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 import formatDate from "utils/formatDate";
 import iconCalendar from "assets/images/icons/icon-calendar.svg";
 
+// useEffect mewakili componentDidMount, componentDidUpdate and componentWillUnmount
+
 export default function Date(props) {
   const { value, placeholder, name } = props;
   const [isShowed, setIsShowed] = useState(false);
@@ -25,24 +27,38 @@ export default function Date(props) {
   };
 
   useEffect(() => {
+    // function dibawah digunakan ketika mengklik diluar Date
+    // maka menutup kalendernya
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
+      // membuang event yang telah digunakan
       document.removeEventListener("mousedown", handleClickOutside);
     };
   });
 
+  // inisialisasi useRef
+  // useRef itu mengetahui apakah komponen tsb digunakan atau tidak sepertinya yaaa..
   const refDate = useRef(null);
+
+  // function dibawah digunakan ketika mengklik diluar Date
+  // maka menutup kalendernya
   const handleClickOutside = (event) => {
+    // Jika refDate tidak terpasang di Dom
     if (refDate && !refDate.current.contains(event.target)) {
+      // maka menutup kalender
       setIsShowed(false);
     }
   };
 
+  // function check intinya mah untuk ketika start date sama 
+  // end date diklik maka otomatis menutup kalendernya
+  // dan menampilkan hasilnya 
   const check = (focus) => {
     focus.indexOf(1) < 0 && setIsShowed(false);
   };
 
+  // display data  value start date dan end date
   const displayDate = `${value.startDate ? formatDate(value.startDate) : ""}${
     value.endDate ? " - " + formatDate(value.endDate) : ""
   }`;
@@ -59,7 +75,7 @@ export default function Date(props) {
           </span>
         </div>
         <input
-          readOnly
+          readOnly // readOnly supaya tidak bisa diketik manual
           type="text"
           className="form-control"
           value={displayDate}
@@ -71,8 +87,12 @@ export default function Date(props) {
           <div className="date-range-wrapper">
             <DateRange
               editableDateInputs={true}
+              // onChange perubahan value dari data yang diambil
               onChange={datePickerChange}
               moveRangeOnFirstSelection={false}
+              // function check intinya mah untuk ketika start date sama 
+              // end date diklik maka otomatis menutup kalendernya
+              // dan menampilkan hasilnya 
               onRangeFocusChange={check}
               ranges={[value]}
             />
