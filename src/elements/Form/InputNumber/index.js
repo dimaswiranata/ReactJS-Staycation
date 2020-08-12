@@ -9,23 +9,24 @@ export default function Number(props) {
   // suffix = satuan (night)
   // value = nilai
 
-  const [InputValue, setInputValue] = useState(`${prefix}${value}${suffix}`);
+  // const [InputValue, setInputValue] = useState(`${prefix}${value}${suffix}`);
 
   const onChange = (e) => {
     let value = String(e.target.value); //menyimpan ke value
 
     // Jika menemukan suffix dan prefix maka dihapus menggunakan function replace
-    if (prefix) value = value.replace(prefix);
-    if (suffix) value = value.replace(suffix);
+    // if (prefix) value = value.replace(prefix);
+    // if (suffix) value = value.replace(suffix);
 
     //RegExp cek value cuma 0 s/d 9 (regexr.com)
-    const patternNumeric = new RegExp("[0-9]*");
+    // const patternNumeric = new RegExp("[0-9]*");
 
     // boolean hasil test patternNumeric value
-    const isNumeric = patternNumeric.test(value);
+    // const isNumeric = patternNumeric.test(value);
 
     // +value untuk mengubah string "32" menjadi 32
-    if (isNumeric && +value <= max && +value >= min) {
+    // if (isNumeric && +value <= max && +value >= min) {
+    if (+value <= max && +value >= min) {
       // running function dari props parent yaitu update state
       props.onChange({
         target: {
@@ -33,7 +34,7 @@ export default function Number(props) {
           value: +value,
         },
       });
-      setInputValue(`${prefix}${value}${suffix}${isSuffixPlural && value > 1 ? "s" : ""}`);
+      // setInputValue(`${prefix}${value}${suffix}${isSuffixPlural && value > 1 ? "s" : ""}`);
     }
   };
 
@@ -68,13 +69,13 @@ export default function Number(props) {
           </span>
         </div>
         <input
+          readOnly
           min={min}
           max={max}
           name={name}
-          pattern="[0-9]*"
           className="form-control"
           placeholder={placeholder ? placeholder : "0"}
-          value={String(InputValue)}
+          value={`${prefix}${value}${suffix}${isSuffixPlural && value > 1 ? "s" : ""}`}
           onChange={onChange}
         />
         <div className="input-group-append">
