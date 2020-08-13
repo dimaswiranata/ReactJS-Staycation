@@ -35,6 +35,8 @@ export default function File(props) {
             <span className="input-group-text">{prepend}</span>
           </div>
         )}
+        {/* value yang akan dikirim */}
+        {/* d-none supaya sembunyi */}
         <input
           accept={accept}
           ref={refInputFile}
@@ -44,6 +46,9 @@ export default function File(props) {
           value={FileName}
           onChange={onChange}
         />
+        {/* input masking */}
+        {/* untuk diklik dan menujukan hasil pilihan gambar */}
+        {/* layer depan */}
         <input
           onClick={() => refInputFile.current.click()}
           defaultValue={FileName}

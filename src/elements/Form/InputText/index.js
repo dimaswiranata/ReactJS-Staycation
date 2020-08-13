@@ -17,7 +17,10 @@ export default function Text(props) {
   } = props;
 
   const [HasError, setHasError] = useState(null);
+
+  //pattern
   let pattern = "";
+
   if (type === "email") pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (type === "tel") pattern = "[0-9]*";
 
@@ -35,6 +38,9 @@ export default function Text(props) {
     }
 
     if (type === "tel") {
+      //Jika type tel maka menghentikan input huruf
+      //Jika menginput huruf value dari valid akan false
+      // maka tidak menyentuh onChange
       if (event.target.validity.valid) props.onChange(target);
     } else {
       props.onChange(target);
@@ -80,8 +86,8 @@ Text.propTypes = {
   name: propTypes.string.isRequired,
   value: propTypes.oneOfType([propTypes.number, propTypes.string]).isRequired,
   onChange: propTypes.func.isRequired,
-  prepend: propTypes.oneOfType([propTypes.number, propTypes.string]),
-  append: propTypes.oneOfType([propTypes.number, propTypes.string]),
+  prepend: propTypes.oneOfType([propTypes.number, propTypes.string]), //sebelum input
+  append: propTypes.oneOfType([propTypes.number, propTypes.string]), //setelah input
   type: propTypes.string,
   placeholder: propTypes.string,
   outerClassName: propTypes.string,
