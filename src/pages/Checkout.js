@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Fade from "react-reveal/Fade";
+import { connect } from "react-redux";
 
 import Header from "parts/Header";
 import Button from "elements/Button";
@@ -16,7 +17,7 @@ import BookingInformation from "parts/Checkout/BookingInformation";
 import Payment from "parts/Checkout/Payment";
 import Completed from "parts/Checkout/Completed";
 
-export default class Checkout extends Component {
+class Checkout extends Component {
 
   //state local / payload data API
   state = {
@@ -54,10 +55,33 @@ export default class Checkout extends Component {
     //biar ga perlu this.state.data
     const { data } = this.state;
 
-    // dummy data checkout duration
-    const checkout = {
-      duration: 3
-    }
+    // data redux checkout
+    const { checkout } = this.props;
+
+    // page yang akan dikeluarkan apabila checkout undefined
+    if (!checkout)
+      return (
+        <div className="container">
+          <div
+            className="row align-items-center justify-content-center text-center"
+            style={{ height: "100vh" }}
+          >
+            <div className="col-3">
+              Pilih kamar dulu
+              <div>
+                <Button
+                  className="btn mt-5"
+                  type="button"
+                  onClick={() => this.props.history.goBack()}
+                  isLight
+                >
+                  Back
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
 
     // Object/Array untuk Stepper
     const steps = {
@@ -228,3 +252,9 @@ export default class Checkout extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  checkout: state.checkout
+});
+
+export default connect(mapStateToProps, null)(Checkout)
