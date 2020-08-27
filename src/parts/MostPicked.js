@@ -27,8 +27,12 @@ function MostPicked(props) {
                     {/* image */}
                     <figure className="img-wrapper">
                       <img
-                        src={item.imageUrl}
-                        alt={item.name}
+                        src={
+                          item.imageId[0]
+                            ? `${process.env.REACT_APP_HOST}/${item.imageId[0].imageUrl}`
+                            : ""
+                        }
+                        alt={item.title}
                         className="img-cover"
                       />
                     </figure>
