@@ -23,7 +23,7 @@ function BookingInformation(props) {
                 <figure className="img-wrapper" style={{ height: 270 }}>
                   <img
                     className="img-cover"
-                    src={ItemDetails.imageUrls[0].url}
+                    src={`${process.env.REACT_APP_HOST}/${ItemDetails.imageId[0].imageUrl}`}
                     alt={ItemDetails.title}
                   />
                 </figure>
@@ -37,7 +37,7 @@ function BookingInformation(props) {
                     <div className="meta-wrapper">
 
                       {/* h5 name */}
-                      <h5>{ItemDetails.name}</h5>
+                      <h5>{ItemDetails.title}</h5>
 
                       {/* span city & country */}
                       <span className="text-gray-500">
